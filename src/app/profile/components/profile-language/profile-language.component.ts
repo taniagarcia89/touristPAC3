@@ -11,11 +11,21 @@ import { AppState } from 'src/app/app.reducers';
 import { Store } from '@ngrx/store';
 import { UserState } from '../../reducers';
 import * as UserAction from '../../actions';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 
 @Component({
   selector: 'app-profile-language',
   templateUrl: './profile-language.component.html',
-  styleUrls: ['./profile-language.component.css']
+  styleUrls: ['./profile-language.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0.2
+      })),
+      transition('void <=> *', animate(1500)),
+    ])
+  ]
 })
 export class ProfileLanguageComponent implements OnInit {
   userState$: UserState;
