@@ -13,11 +13,21 @@ import { UserState } from '../../../profile/reducers';
 import { AppState } from '../../../app.reducers';
 import { Store } from '@ngrx/store';
 import * as ActivitiesAction from '../../actions';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 
 @Component({
   selector: 'app-activity-admin-detail',
   templateUrl: './activity-admin-detail.component.html',
-  styleUrls: ['./activity-admin-detail.component.css']
+  styleUrls: ['./activity-admin-detail.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0.2
+      })),
+      transition('void <=> *', animate(1500)),
+    ])
+  ]
 })
 export class ActivityAdminDetailComponent implements OnInit {
   userState$: UserState;

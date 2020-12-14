@@ -1,101 +1,104 @@
-<div class="container">
-    <form class="text-center border border-light p-5" [formGroup]="rForm" (submit)="submit()"> 
-        <div class="form-group">
-            <div>
-                <!-- Category -->
-                <label for="type">Category:</label>
-                <select (change)="onChangeCategoryValue()" formControlName="category" class="form-control mb-4" placeholder="Category">
-                    <option [ngValue]="null">Select category...</option>                
-                    <option *ngFor="let category of eActivityCategories | keyvalue" [ngValue]="category.value">{{category.value}}</option>              
-                </select>
-                <span style="color: red;" *ngIf="rForm.get('category').errors && (rForm.get('category').touched || rForm.get('category').dirty)">                
-                    <span *ngIf="rForm.get('category').errors.required">Category is required</span>
-                </span>
-            </div>
-            <div>
-                <!-- Subcategory -->
-                <label for="type">Subcategory:</label>
-                <select formControlName="subcategory" class="form-control mb-4" placeholder="Subcategory">
-                    <option [ngValue]="null">Select subcategory...</option>                
-                    <option *ngFor="let subcategory of eSubcategory | keyvalue" [ngValue]="subcategory.value">{{subcategory.value}}</option>              
-                </select>
-                <span style="color: red;" *ngIf="rForm.get('subcategory').errors && (rForm.get('subcategory').touched || rForm.get('subcategory').dirty)">                
-                    <span *ngIf="rForm.get('subcategory').errors.required">Subcategory is required</span>
-                </span>
-            </div>
-            <div>
-                <!-- Name -->
-                <label for="name">Name:</label>
-                <input type="text" placeholder="Name" name="name" formControlName="name" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('name').errors && (rForm.get('name').touched || rForm.get('name').dirty)">                
-                    <span *ngIf="rForm.get('name').errors.required">Name is required</span> 
-                    <span *ngIf="rForm.get('name').errors.minlength || rForm.get('name').errors.maxlength">Name must be greater than 3 characters and less than 55 characters</span>
-                </span>
-            </div>
-            <div>
-                <!-- Description -->
-                <label for="university">Description:</label>
-                <input type="text" placeholder="Description" name="description" formControlName="description" class="form-control mb-4">                
-            </div>            
-            <div>
-                <!-- Language -->
-                <label for="language">Language:</label>
-                <select formControlName="language" class="form-control mb-4" placeholder="Language">
-                    <option [ngValue]="null">Select language...</option>                
-                    <option *ngFor="let language of eActivityLenguages | keyvalue" [ngValue]="language.value">{{language.value}}</option>              
-                </select>
-                <span style="color: red;" *ngIf="rForm.get('language').errors && (rForm.get('language').touched || rForm.get('language').dirty)">                
-                    <span *ngIf="rForm.get('language').errors.required">Language is required</span>
-                </span>
-            </div>
-            <div>
-                <!-- Date -->
-                <label for="date">Date:</label>
-                <input type="text" placeholder="dd/MM/yyyy" name="date" formControlName="date" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('date').errors && (rForm.get('date').touched || rForm.get('date').dirty)">                
-                    <span *ngIf="rForm.get('date').errors?.errorFormatDate">Invalid format date</span>
-                </span>
-            </div>
-            <div>
-                <!-- Price -->
-                <label price="name">Price:</label>
-                <input type="number" placeholder="Price" name="price" formControlName="price" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('price').errors && (rForm.get('price').touched || rForm.get('price').dirty)">                
-                    <span *ngIf="rForm.get('price').errors.required">Price is required</span>   
-                    <span *ngIf="rForm.get('price').errors?.errorLessZero">Price must be greater than zero</span>                  
-                </span>
-            </div>
-            <div>
-                <!-- Minium Capacity -->
-                <label price="miniumCapacity">Minium Capacity:</label>
-                <input type="number" placeholder="Minium Capacity" name="miniumCapacity" formControlName="miniumCapacity" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('miniumCapacity').errors && (rForm.get('miniumCapacity').touched || rForm.get('miniumCapacity').dirty)">                
-                    <span *ngIf="rForm.get('miniumCapacity').errors.required">Minium Capacity is required</span>                     
-                    <span *ngIf="rForm.get('miniumCapacity').errors?.errorLessZero">Minium Capacity must be greater than zero</span>
-                </span>
-            </div>
-            <div>
-                <!-- limit Capacity -->
-                <label price="limitCapacity">Limit Capacity:</label>
-                <input type="number" placeholder="Limit Capacity" name="limitCapacity" formControlName="limitCapacity" class="form-control mb-4">
-                <span style="color: red;" *ngIf="rForm.get('limitCapacity').errors && (rForm.get('limitCapacity').touched || rForm.get('limitCapacity').dirty)">                
-                    <span *ngIf="rForm.get('limitCapacity').errors.required">Limit Capacity is required</span>                     
-                    <span *ngIf="rForm.get('limitCapacity').errors?.errorLessZero">Limit Capacity must be greater than zero</span>
-                </span>
-            </div>
-            <div>
-                <!-- State -->
-                <label for="state">State:</label>
-                <select formControlName="state" class="form-control mb-4" placeholder="State">
-                    <option [ngValue]="null">Select state...</option>                
-                    <option *ngFor="let state of eActivityStates | keyvalue" [ngValue]="state.value">{{state.value}}</option>              
-                </select>
-                <span style="color: red;" *ngIf="rForm.get('state').errors && (rForm.get('state').touched || rForm.get('state').dirty)">                
-                    <span *ngIf="rForm.get('state').errors.required">State is required</span>
-                </span>
-            </div>            
-            <button class="btn btn-primary my-4 float-left" type="submit" [disabled]="rForm.invalid">Save</button>
-        </div>
-
-    </form>
+<div class="container-uoc" [@fadeInOut]>
+    <mat-card class="mat-elevation-z4">  
+        <form [formGroup]="rForm" (submit)="submit()">
+            <!-- Category -->
+            <section>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select Category</mat-label>
+                    <mat-select (selectionChange)="onChangeCategoryValue()" formControlName="category">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let category of eActivityCategories | keyvalue" [value]="category.value">{{category.value}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="rForm.get('category').hasError('required')">Category is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <!-- Subcategory -->
+            <section>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select Subcategory</mat-label>
+                    <mat-select formControlName="subcategory">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let subcategory of eSubcategory | keyvalue" [value]="subcategory.value">{{subcategory.value}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="rForm.get('subcategory').hasError('required')">Subcategory is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <!-- Name -->
+            <section>
+                <mat-form-field appearence="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName="name" required placeholder="Name"/>
+                    <mat-error *ngIf="(rForm.get('name').hasError('minlength') || rForm.get('name').hasError('maxlength')) && !rForm.get('name').hasError('required')">Name must be greater than 3 characters and less than 55 characters</mat-error>
+                    <mat-error *ngIf="rForm.get('name').hasError('required')">Name is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <!-- Description -->
+            <section>
+                <mat-form-field appearence="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput type="text" formControlName="description" placeholder="description"/>
+                </mat-form-field>
+            </section>
+            <!-- Language -->
+            <section>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select Language</mat-label>
+                    <mat-select formControlName="language">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let language of eActivityLenguages | keyvalue" [value]="language.value">{{language.value}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="rForm.get('language').hasError('required')">Language is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <!-- Date -->
+            <section>
+                <mat-form-field appearence="fill">
+                    <mat-label>Date</mat-label>
+                    <input matInput type="text" formControlName="date" placeholder="dd/mm/yyyy"/>
+                    <mat-error *ngIf="rForm.get('date').hasError('errorFormatDate')">Invalid date</mat-error>
+                </mat-form-field>
+            </section>
+            <!-- Price -->
+            <section>
+                <mat-form-field appearence="fill">
+                    <mat-label>Price</mat-label>
+                    <input matInput type="number" formControlName="price" placeholder="Price"/>
+                    <mat-error *ngIf="rForm.get('price').hasError('errorLessZero') && !rForm.get('price').hasError('required')">Price must be greater than zero</mat-error>
+                    <mat-error *ngIf="rForm.get('price').hasError('required')">Price is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <!-- Minium Capacity -->
+            <section>
+                <mat-form-field appearence="fill">
+                    <mat-label>Minium Capacity</mat-label>
+                    <input matInput type="number" formControlName="miniumCapacity" placeholder="Minium Capacity"/>
+                    <mat-error *ngIf="rForm.get('miniumCapacity').hasError('errorLessZero') && !rForm.get('miniumCapacity').hasError('required')">Minium Capacity must be greater than zero</mat-error>
+                    <mat-error *ngIf="rForm.get('miniumCapacity').hasError('required')">Minium Capacity is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <!-- Limit Capacity -->
+            <section>
+                <mat-form-field appearence="fill">
+                    <mat-label>Limit Capacity</mat-label>
+                    <input matInput type="number" formControlName="limitCapacity" placeholder="Limit Capacity"/>
+                    <mat-error *ngIf="rForm.get('limitCapacity').hasError('errorLessZero') && !rForm.get('limitCapacity').hasError('required')">Limit Capacity must be greater than zero</mat-error>
+                    <mat-error *ngIf="rForm.get('limitCapacity').hasError('required')">Limit Capacity is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <!-- State -->
+            <section>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select state</mat-label>
+                    <mat-select formControlName="state">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let state of eActivityStates | keyvalue" [value]="state.value">{{state.value}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="rForm.get('state').hasError('required')">State is <strong>required</strong></mat-error>
+                </mat-form-field>
+            </section>
+            <section style="text-align: center;">
+                <button mat-raised-button color="primary" type="submit" [disabled]="rForm.invalid">Save</button>
+            </section>
+        </form>
+    </mat-card>
 </div>
