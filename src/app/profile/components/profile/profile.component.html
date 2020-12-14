@@ -1,6 +1,7 @@
 <div class="container-uoc" [@fadeInOut]>
     <mat-card class="mat-elevation-z4">  
         <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+            <h5 class="float-left">PROFILE</h5>
             <!-- Si perfil de usuario company -->
             <div *ngIf="companyProfile">
             <!-- Company name -->  
@@ -93,11 +94,8 @@
             </section>
         </form>
     </mat-card>
-    </div>
-           
-             
-  <!--            
-    
+</div>
+<div class="container">
     <form class="text-center border border-light p-5"> 
         <br>
         <h5 class="float-left">EDUCATION</h5>
@@ -161,5 +159,6 @@
             </table>            
             <button class="btn btn-outline-primary float-left" [routerLink]="['/profile-language']">Add</button>
           </ul>          
-    </form>    
-</div> -->
+    </form> 
+</div>
+        
