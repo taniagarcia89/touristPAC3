@@ -12,11 +12,20 @@ import { AppState } from 'src/app/app.reducers';
 import { Store } from '@ngrx/store';
 import { UserState } from '../../reducers';
 import * as UserAction from '../../actions';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-profile-education',
   templateUrl: './profile-education.component.html',
-  styleUrls: ['./profile-education.component.css']
+  styleUrls: ['./profile-education.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0.2
+      })),
+      transition('void <=> *', animate(1500)),
+    ])
+  ]
 })
 export class ProfileEducationComponent implements OnInit {
   userState$: UserState;

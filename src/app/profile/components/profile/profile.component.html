@@ -66,10 +66,10 @@
             <section>
                 <mat-form-field appearance="fill">
                     <mat-label>Select nationality</mat-label>
-                    <select matNativeControl [formControl]="nationality">
-                      <option value="" selected></option>
-                      <option *ngFor="let nationality of eUserNationalities | keyvalue" [ngValue]="nationality.value">{{nationality.value}}</option>
-                    </select>
+                    <mat-select formControlName="nationality">
+                      <mat-option>--</mat-option>
+                      <mat-option *ngFor="let nationality of eUserNationalities | keyvalue" [value]="nationality.value">{{nationality.value}}</mat-option>
+                    </mat-select>
                     <!-- Check NIF -->
                   </mat-form-field>
             </section>

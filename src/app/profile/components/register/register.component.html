@@ -24,10 +24,10 @@
         <section>
             <mat-form-field appearance="fill">
                 <mat-label>Select user type</mat-label>
-                <select matNativeControl [formControl]="type">
-                  <option value="" selected></option>
-                  <option *ngFor="let type of eUserTypes | keyvalue" [ngValue]="type.value">{{type.value}}</option>
-                </select>
+                <mat-select [formControl]="type" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let type of eUserTypes | keyvalue" [value]="type.value">{{type.value}}</mat-option>
+                </mat-select>
                 <mat-error *ngIf="type.hasError('required')">Type is <strong>required</strong></mat-error>
               </mat-form-field>
         </section>
