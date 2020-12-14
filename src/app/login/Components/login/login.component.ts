@@ -5,14 +5,25 @@ import { AppState } from 'src/app/app.reducers';
 import { Store } from '@ngrx/store';
 import { LoginState } from '../../reducers';
 import * as LoginAction from '../../actions';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0.2
+      })),
+      transition('void <=> *', animate(1500)),
+    ])
+  ]
 })
 export class LoginComponent implements OnInit {
 
+  hide = true;
   public email: FormControl;
   public password: FormControl;
   public loginForm: FormGroup;
@@ -46,5 +57,11 @@ export class LoginComponent implements OnInit {
       password: this.password.value,
     };
     this.store.dispatch(LoginAction.login({credentials}));
+  }
+
+  public getErrorMessage(): string | undefined {
+    if (this.password.hasError('required')) {
+      return 'You must enter a password';
+    }
   }
 }

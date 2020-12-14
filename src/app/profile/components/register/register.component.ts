@@ -12,15 +12,27 @@ import { LoginState } from '../../../login/reducers';
 import * as LoginAction from '../../../login/actions';
 import { UserState } from '../../reducers';
 import * as UserAction from '../../actions';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({
+        opacity: 0.2
+      })),
+      transition('void <=> *', animate(1500)),
+    ])
+  ]
 })
 
 export class RegisterComponent implements OnInit {
 
+  hide = true;
+  hide2 = true;
   loginState$: LoginState;
   userState$: UserState;
 
@@ -93,5 +105,12 @@ export class RegisterComponent implements OnInit {
     this.user.languages = new Array<Language>();
 
     this.store.dispatch(UserAction.createUser({user: this.user}));
+  }
+
+  public getErrorMessage(): string | undefined {
+    
+    if (this.password.hasError('minlength')) {
+      return 'Password must be grater than 8 characters';
+    }
   }
 }
