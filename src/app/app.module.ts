@@ -26,7 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     FooterComponent
   ],
   imports: [
+    MatListModule,
     MatSidenavModule,
     MatToolbarModule,
     FlexLayoutModule,
