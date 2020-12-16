@@ -1,6 +1,6 @@
 <!-- Si hay alguna actividad seleccionada -->
 <div *ngIf="activity">
-  <h5 class="float-left">Activities detail</h5>
+  <h2 class="float-left">Activities detail</h2>
     <div class="container-uoc" [@fadeInOut]>
       <mat-card class="mat-elevation-z4">  
           <form [formGroup]="rForm">
@@ -87,7 +87,7 @@
             </section>
             <!-- DELETE ACTIVITY BUTTON -->
             <section style="text-align: center;">
-              <button mat-raised-button color="primary" type="button" *ngIf="rForm.get('myActivityDeleteVisible').value" (click)="onClickDelete()()">Delete</button>
+              <button mat-raised-button color="primary" type="button" *ngIf="rForm.get('myActivityDeleteVisible').value" (click)="onClickDelete()">Delete</button>
             </section>
             <!-- SAVE FAVORITES BUTTON -->
             <section style="text-align: center;">
