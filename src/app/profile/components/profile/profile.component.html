@@ -5,7 +5,7 @@
 <div *ngIf="!userState$.pending" class="container-uoc" [@fadeInOut]>
     <mat-card class="mat-elevation-z4">  
         <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
-            <h5 class="float-left">PROFILE</h5>
+            <h2 class="float-left">PROFILE</h2>
             <!-- Si perfil de usuario company -->
             <div *ngIf="companyProfile">
             <!-- Company name -->  
@@ -102,7 +102,7 @@
 <div class="container">
     <form class="text-center border border-light p-5"> 
         <br>
-        <h5 class="float-left">EDUCATION</h5>
+        <h2 class="float-left">EDUCATION</h2>
         <br>
         <hr style="border-top: 1px solid blue;"/>
         <ul class="list-group">
@@ -136,7 +136,7 @@
     </form>
     <form class="text-center border border-light p-5"> 
         <br>
-        <h5 class="float-left">LANGUAGES</h5>
+        <h2 class="float-left">LANGUAGES</h2>
         <br>
         <hr style="border-top: 1px solid blue;"/>
         <ul class="list-group">
