@@ -1,9 +1,6 @@
 
    
-    <!-- UOC LOGO -->
-    <!-- <a class="navbar-brand" href="#">
-        <img width="130" src="assets/img/uoc_masterbrand_3linies_positiu.png" alt="UOC logo">
-    </a> -->
+    
     
 
 
@@ -24,12 +21,17 @@
       <a *ngIf="loginState$.loggedIn" routerLink="/profile" mat-button>Profile</a>
       <a *ngIf="loginState$.loggedIn" (click)="onClickLogout()" mat-button>Logout</a>
     </div>
+    <span class="fill-space"></span>
+    <!-- UOC LOGO -->
+    <a href="#">
+        <img width="130" src="assets/img/uoc_masterbrand_3linies_positiu2.jpg" alt="UOC logo">
+    </a>
   </mat-toolbar-row>
 </mat-toolbar>
 
+<mat-sidenav-container>
   <mat-sidenav #sidenav>
     <mat-nav-list>
-      <a (click)="sidenav.toggle()"  mat-list-item>Close</a>
       <a *ngIf="!loginState$.loggedIn" routerLink="/login" mat-list-item>Sign in</a>
       <a *ngIf="!loginState$.loggedIn" routerLink="/register" mat-list-item>Join now</a>
       <a *ngIf="loginState$.loggedIn" (click)="onClickHome()" mat-list-item>Home</a>
@@ -38,5 +40,11 @@
       <a *ngIf="userState$.user?.profile.type === 'Tourist'" (click)="onClickMyActivities()" mat-list-item>My activities</a>
       <a *ngIf="loginState$.loggedIn" routerLink="/profile" mat-list-item>Profile</a>
       <a *ngIf="loginState$.loggedIn" (click)="onClickLogout()" mat-list-item>Logout</a>
+      <a (click)="sidenav.toggle()"  mat-list-item><mat-icon>close</mat-icon>Close</a>
     </mat-nav-list>
   </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
